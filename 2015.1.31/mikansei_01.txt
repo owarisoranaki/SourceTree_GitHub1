@@ -1,0 +1,115 @@
+//
+ class Axy{float x=0;float y=0;} 
+ class Bxy{float x=100;float y=250;}
+ class Cxy{float x=500;float y=500;}
+ class Pxy{float x=100;float y=100;}
+ Axy Axy=new Axy();
+ Bxy Bxy=new Bxy();
+ Cxy Cxy=new Cxy();
+ Pxy Pxy=new Pxy();
+//
+ class PA_Vxy{float x=0;float y=0;}
+ class PA_Vxy2{float x=0;float y=0;}
+ class PA_Vxy3{float x=0;float y=0;}
+ PA_Vxy PA_Vxy=new PA_Vxy();
+ PA_Vxy2 PA_Vxy2=new PA_Vxy2();
+ PA_Vxy3 PA_Vxy3=new PA_Vxy3();
+ //
+ class PB_Vxy{float x=0;float y=0;}
+ class PB_Vxy2{float x=0;float y=0;}
+ class PB_Vxy3{float x=0;float y=0;}
+ PB_Vxy PB_Vxy=new PB_Vxy();
+ PB_Vxy2 PB_Vxy2=new PB_Vxy2();
+ PB_Vxy3 PB_Vxy3=new PB_Vxy3();
+//
+ class PC_Vxy{float x=0;float y=0;}
+ class PC_Vxy2{float x=0;float y=0;}
+ class PC_Vxy3{float x=0;float y=0;}
+ PC_Vxy PC_Vxy=new PC_Vxy();
+ PC_Vxy2 PC_Vxy2=new PC_Vxy2();
+ PC_Vxy3 PC_Vxy3=new PC_Vxy3();
+ //
+ float l,ll;
+ float sp=3.0f;
+ int Switch=0;
+ int Switch2=0;
+ void setup(){
+  size(500,500);
+}
+
+void draw(){
+  background(0);
+   //
+  ellipse(Pxy.x,Pxy.y,10,10);
+  if(Switch==0){
+  //
+  PA_Vxy.x=Axy.x-Pxy.x;
+  PA_Vxy.y=Axy.y-Pxy.y;
+ //
+  l = sqrt(PA_Vxy.x*PA_Vxy.x+PA_Vxy.y*PA_Vxy.y);
+  //
+  PA_Vxy2.x=PA_Vxy.x/l;
+  PA_Vxy2.y=PA_Vxy.y/l;
+  //
+  PA_Vxy3.x=PA_Vxy2.x*sp;
+  PA_Vxy3.y=PA_Vxy2.y*sp;
+  //
+    Pxy.x += PA_Vxy3.x;
+    Pxy.y += PA_Vxy3.y;
+  //
+    if(Pxy.x<=Axy.x&&Pxy.y<=Axy.y){
+    PA_Vxy.x=0;
+    PA_Vxy.y=0;
+    l=0;
+    PA_Vxy2.x=0;
+    PA_Vxy2.y=0;
+    PA_Vxy3.x=0;
+    PA_Vxy3.y=0;
+    Switch=1;
+  }
+}
+  
+  
+  if(Switch==1){
+   
+  PB_Vxy.x=Bxy.x-Pxy.x;
+  PB_Vxy.y=Bxy.y-Pxy.y;
+  //
+  ll = sqrt(PB_Vxy.x*PB_Vxy.x+PB_Vxy.y*PB_Vxy.y);
+  //
+  PB_Vxy2.x=PB_Vxy.x/ll;
+  PB_Vxy2.y=PB_Vxy.y/ll;
+  //
+  PB_Vxy3.x=PB_Vxy2.x*sp;
+  PB_Vxy3.y=PB_Vxy2.y*sp;
+  //
+    Pxy.x += PB_Vxy3.x;
+    Pxy.y += PB_Vxy3.y;
+  //
+    if(Pxy.x>=Bxy.x&&Pxy.y>=Bxy.y){
+    Switch=2;
+  }
+} 
+if(Switch==2){
+ // 
+  PC_Vxy.x=Cxy.x-Pxy.x;
+  PC_Vxy.y=Cxy.y-Pxy.y;
+  //
+  ll = sqrt(PC_Vxy.x*PC_Vxy.x+PC_Vxy.y*PC_Vxy.y);
+  //
+  PC_Vxy2.x=PC_Vxy.x/ll;
+  PC_Vxy2.y=PC_Vxy.y/ll;
+  //
+  PC_Vxy3.x=PC_Vxy2.x*sp;
+  PC_Vxy3.y=PC_Vxy2.y*sp;
+ //
+    Pxy.x += PC_Vxy3.x;
+    Pxy.y += PC_Vxy3.y;
+  //
+    if(Pxy.x>=Cxy.x&&Pxy.y>=Cxy.y){
+    Switch=0;
+    Switch2=1;
+  }
+}
+
+}
